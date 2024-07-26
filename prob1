@@ -1,0 +1,34 @@
+# Load necessary library
+library(datasets)
+
+# 1. Read the Iris dataset
+data(iris)
+
+# 2. View the dataset and display the first 6 and last 6 rows
+head(iris, 6)
+tail(iris, 6)
+
+# 3. Obtain the statistical summary of the dataset
+summary(iris)
+
+# 4. Calculate the mean petal width of the Iris versicolor species
+mean_versicolor_petal_width <- mean(iris$Petal.Width[iris$Species == "versicolor"])
+mean_versicolor_petal_width
+
+# 5. Create a frequency distribution of petal width using a histogram
+hist(iris$Petal.Width, main = "Frequency Distribution of Petal Width", xlab = "Petal Width", col = "lightblue", border = "black")
+
+# 6. Calculate the mean, median, variance, and standard deviation of sepal length for each species
+library(dplyr)
+
+sepal_length_stats <- iris %>%
+  group_by(Species) %>%
+  summarise(
+    mean_sepal_length = mean(Sepal.Length),
+    median_sepal_length = median(Sepal.Length),
+    variance_sepal_length = var(Sepal.Length),
+    sd_sepal_length = sd(Sepal.Length)
+  )
+
+# 7. Display the calculated statistics in a table format
+sepal_length_stats
