@@ -1,0 +1,45 @@
+# 1. Create vectors for Age, Diastolic pressure, and Systolic pressure
+Age <- c(35, 65, 49, 30, 20, 40, 90, 54, 78, 45)
+Systolic <- c(122, 120, 120, 115, 130, 131, 118, 122, 120, 115)
+Diastolic <- c(83, 79, 78, 72, 90, 90, 82, 80, 82, 75)
+
+# 2. Calculate the following statistics for each variable:
+calculate_stats <- function(x) {
+  n <- length(x)
+  min_val <- min(x)
+  max_val <- max(x)
+  median_val <- median(x)
+  mean_val <- mean(x)
+  variance_val <- var(x)
+  sd_val <- sd(x)
+  
+  return(c(
+    n = n, 
+    min = min_val, 
+    max = max_val, 
+    median = median_val, 
+    mean = mean_val, 
+    variance = variance_val, 
+    sd = sd_val
+  ))
+}
+
+# Calculate statistics for Age
+age_stats <- calculate_stats(Age)
+
+# Calculate statistics for Systolic pressure
+systolic_stats <- calculate_stats(Systolic)
+
+# Calculate statistics for Diastolic pressure
+diastolic_stats <- calculate_stats(Diastolic)
+
+# 3. Present the results in a table format
+results <- data.frame(
+  Statistic = c("Number of samples", "Minimum value", "Maximum value", "Median", "Mean", "Variance", "Standard deviation"),
+  Age = age_stats,
+  Systolic_Pressure = systolic_stats,
+  Diastolic_Pressure = diastolic_stats
+)
+
+# Display the results
+print(results)
